@@ -9,13 +9,13 @@ export default function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || "",
-            slug: post?.slug || "",
+            slug: post?.$id || "",
             content: post?.content || "",
             status: post?.status || "active",
         },
     });
 
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
 
     const submit = async (data) => {
@@ -35,7 +35,7 @@ export default function PostForm({ post }) {
                 navigate(`/post/${dbPost.$id}`);
             }
         } else {
-            const file = await appwriteService.uploadFile(data.image[0]);
+            const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
 
             if (file) {
                 const fileId = file.$id;
@@ -57,6 +57,11 @@ export default function PostForm({ post }) {
                 .replace(/[^a-zA-Z\d\s]+/g, "-")
                 .replace(/\s/g, "-");
 
+            // const slug = value.toLowerCase()    anthor method
+            //                   .replace(/ /g, '-')
+            // setValue('slug',slug)
+            // return slug
+
         return "";
     }, []);
 
@@ -73,10 +78,11 @@ export default function PostForm({ post }) {
     return (
         <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
             <div className="w-2/3 px-2">
-                <Input
-                    label="Title :"
+                <Input 
+                    
                     placeholder="Title"
-                    className="mb-4"
+                    label ="Title :"
+                    className="mb-4 "
                     {...register("title", { required: true })}
                 />
                 <Input
@@ -92,9 +98,9 @@ export default function PostForm({ post }) {
             </div>
             <div className="w-1/3 px-2">
                 <Input
-                    label="Featured Image :"
+                    label="Choose Your file :"
                     type="file"
-                    className="mb-4"
+                    className="mb-4 "
                     accept="image/png, image/jpg, image/jpeg, image/gif"
                     {...register("image", { required: !post })}
                 />
@@ -108,8 +114,8 @@ export default function PostForm({ post }) {
                     </div>
                 )}
                 <Select
-                    options={["active", "inactive"]}
-                    label="Status"
+                    options={["-Select-","active", "inactive"]}
+                    label="Status :"
                     className="mb-4"
                     {...register("status", { required: true })}
                 />

@@ -12,10 +12,7 @@ import Signup from './pages/SignUp.jsx'
 import EditPost from "./pages/EditPost.jsx";
 import Post from "./pages/Post.jsx";
 import AllPosts from "./pages/AllPost.jsx";
-import cors from cors
-
-const cors = require("cors");
-
+import { Analytics } from "@vercel/analytics/react";
 
 const router = createBrowserRouter([
   {
