@@ -4,11 +4,7 @@ import Logo from '../Logo'
 
 function Footer() {
   return (
-<<<<<<< HEAD
     <section className="relative overflow-hidden py-10 bg-black border border-t-2 border-t-black">
-=======
-    <section className="w-auto overflow-visible  py-9 bg-black border border-t-2 border-t-black">
->>>>>>> 6d171a49f3037c82233c66c70c4fb1d0e563ccec
             <div className="relative z-10 mx-auto max-w-7xl px-4">
                 <div className="-m-6 flex flex-wrap">
                     <div className="w-full p-6 md:w-1/2 lg:w-5/12">
