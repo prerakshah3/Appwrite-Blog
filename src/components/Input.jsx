@@ -10,14 +10,14 @@ const Input = React.forwardRef( function Input({
     return (
         <div className='w-full'>
             {label && <label 
-            className='inline-block mb-1 pr-1' 
+            className='inline-block mb-2 pr-1 text-gray-700 font-medium' 
             htmlFor={id}>
                 {label}
             </label>
             }
             <input
             type={type}
-            className={`px-2 py-1 rounded-lg bg-white text-black outline-none focus:bg-white-50 duration-200 border border-black w-full ${className}`}
+            className={`px-4 py-3 rounded-xl bg-gray-50 text-gray-900 outline-none focus:bg-white focus:ring-2 focus:ring-purple-500 duration-200 border border-gray-300 w-full transition-all ${className}`}
             ref={ref}
             {...props}
             id={id}

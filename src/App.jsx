@@ -24,14 +24,12 @@ function App() {
 }, [])
  
 return !Loding ? (
-  <div className='min-h-screen flex flex-wrap content-between bg-white'>
-    <div className='w-full block'>
+  <div className='min-h-screen flex flex-col w-full'>
         <Header />
-        <main>
+    <main className='flex-grow w-full'>
           <Outlet />  
         </main>
         <Footer />
-    </div>
   </div>
 ) : null
   

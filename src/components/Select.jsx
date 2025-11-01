@@ -8,13 +8,13 @@ function Select({
 }, ref) {
     const id = useId()
   return (
-    <div className='w-full py-6'>
-        {label && <label htmlFor={id} className=''></label>}
+    <div className='w-full'>
+        {label && <label htmlFor={id} className='inline-block mb-2 pr-1 text-gray-700 font-medium'>{label}</label>}
         <select
         {...props}
         id={id}
         ref={ref}
-        className={`px-3 py-2 rounded-lg bg-white text-black outline-none focus:bg-gray-50 duration-200 border border-black w-full ${className}`}
+        className={`px-4 py-3 rounded-xl bg-gray-50 text-gray-900 outline-none focus:bg-white focus:ring-2 focus:ring-purple-500 duration-200 border border-gray-300 w-full transition-all ${className}`}
         >
             {options?.map((option) => (
                 <option key={option} value={option}>
